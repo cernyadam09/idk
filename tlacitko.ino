@@ -50,12 +50,6 @@ led();
 
 
 
-
-
-
-
-
-
 void tisk() 
 {
 if(pocetpolozek++>20) 
@@ -72,7 +66,9 @@ if(pocetpolozek++>20)
 
 }
 
-void led()
+void led()	// Předat všechny proměnné jako parametry led( int pin, int sta) - (proměnná ctení název neodpovídá obsahu)
+		// a ovládat jen jednu diodu
+		// název led - název neodpovídá obsahu např(LedSvitiAnoNe)
 {
 
 
