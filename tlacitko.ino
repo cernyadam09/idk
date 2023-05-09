@@ -41,7 +41,18 @@ void loop()
     
   }
 
-led();
+if(cteni == HIGH)
+  {
+
+    digitalWrite(led1, HIGH);
+    digitalWrite(led, HIGH);
+  }
+  else
+  {
+
+    digitalWrite(led1,LOW);
+    digitalWrite(led,LOW);
+  }
 
 
   
@@ -66,7 +77,12 @@ if(pocetpolozek++>20)
 
 }
 
-void led()	// Předat všechny proměnné jako parametry led( int pin, int sta) - (proměnná ctení název neodpovídá obsahu)
+int cteni;
+int led = 13;
+int led1 = 12;
+
+void led()
+	// Předat všechny proměnné jako parametry led( int pin, int sta) - (proměnná ctení název neodpovídá obsahu)
 		// a ovládat jen jednu diodu
 		// název led - název neodpovídá obsahu např(LedSvitiAnoNe)
 {
