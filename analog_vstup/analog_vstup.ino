@@ -1,20 +1,20 @@
 
 
-const byte led1 = 10, led2 = 8, led3 = 12;
+const byte ledcervena = 10, ledzelena = 8, ledzluta = 12;
 
 int zpozdeni = 400;
 
 
-int cteni, cteniOld=0,  pocetpolozek;
+int cteni, cteniOld=0,  pocetpolozek, metr=0;
 unsigned long casMic, casMicOld, casRozdil;
 
 
 void setup() 
 {
  pinMode(A0, INPUT);
- pinMode(led1,OUTPUT);
- pinMode(led2,OUTPUT);
- pinMode(led3,OUTPUT);
+ pinMode(ledcervena,OUTPUT);
+ pinMode(ledzelena,OUTPUT);
+ pinMode(ledzluta,OUTPUT);
  Serial.begin(9600);
  
  
@@ -24,42 +24,37 @@ void loop()
 {
   
 
-  analogRead(A0)
-  cteniOld = cteni;
-  cteni= digitalRead(tlacitko);
-  casMic = millis();
+metr= analogRead(A0);
+ 
+
+if(metr < 3333)
+  {
+
+    digitalWrite(ledcervena, LOW);
+    digitalWrite(ledzelena, HIGH);
+    digitalWrite(ledzluta, LOW);
+  }
   
-  if(cteni!=cteniOld)
-  {
-    casRozdil= casMic - casMicOld;
-    
-    
-    
-    if (casRozdil>80) {
-
-      tisk();
-      casMicOld = casMic;
-
-    }
-
-    
-  }
-
-if(cteni == HIGH)
+if(metr > 3333  && metr < 6666)
   {
 
-    digitalWrite(led1, HIGH);
-    digitalWrite(led, HIGH);
-  }
-  else
-  {
-
-    digitalWrite(led1,LOW);
-    digitalWrite(led,LOW);
+    digitalWrite(ledcervena, LOW);
+    digitalWrite(ledzelena, LOW);
+    digitalWrite(ledzluta, HIGH);
   }
 
 
-  
+if(metr > 6666)
+  {
+
+    digitalWrite(ledcervena, HIGH);
+    digitalWrite(ledzelena, LOW);
+    digitalWrite(ledzluta, LOW);
+  }
+
+
+
+
 }
 
 
@@ -81,8 +76,8 @@ if(pocetpolozek++>20)
 
 }
 
-int cteni;
-int led = 13;
+//int cteni;
+//int led = 13;
 int led1 = 12;
 
 void led()
@@ -110,109 +105,7 @@ void led()
 
 
 
-const byte led = 13, led1 = 12, tlacitko = 11;
 
-int zpozdeni = 400;
-
-
-int cteni, cteniOld=0,  pocetpolozek;
-unsigned long casMic, casMicOld, casRozdil;
-
-void setup() 
-{
- pinMode(tlacitko, INPUT);
- pinMode(led,OUTPUT);
- pinMode(led1,OUTPUT);
- Serial.begin(9600);
- 
- 
-}
-
-void loop() 
-{
-  
-  cteniOld = cteni;
-  cteni= digitalRead(tlacitko);
-  casMic = millis();
-  
-  if(cteni!=cteniOld)
-  {
-    casRozdil= casMic - casMicOld;
-    
-    
-    
-    if (casRozdil>80) {
-
-      tisk();
-      casMicOld = casMic;
-
-    }
-
-    
-  }
-
-if(cteni == HIGH)
-  {
-
-    digitalWrite(led1, HIGH);
-    digitalWrite(led, HIGH);
-  }
-  else
-  {
-
-    digitalWrite(led1,LOW);
-    digitalWrite(led,LOW);
-  }
-
-
-  
-}
-
-
-
-
-void tisk() 
-{
-if(pocetpolozek++>20) 
-    {
-
-      Serial.println();pocetpolozek = 0;
-   
- 
-    }
-     Serial.print(cteni); Serial.print("-"); Serial.print(casRozdil); Serial.print(",");
-  
-
-
-
-}
-
-int cteni;
-int led = 13;
-int led1 = 12;
-
-void led()
-	// Předat všechny proměnné jako parametry led( int pin, int sta) - (proměnná ctení název neodpovídá obsahu)
-		// a ovládat jen jednu diodu
-		// název led - název neodpovídá obsahu např(LedSvitiAnoNe)
-{
-
-
-  if(cteni == HIGH)
-  {
-
-    digitalWrite(led1, HIGH);
-    digitalWrite(led, HIGH);
-  }
-  else
-  {
-
-    digitalWrite(led1,LOW);
-    digitalWrite(led,LOW);
-  }
-
-
-}
 
 
 
