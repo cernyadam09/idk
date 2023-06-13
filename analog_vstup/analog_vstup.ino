@@ -27,15 +27,15 @@ void loop()
 metr= analogRead(A0);
  
 
-if(metr < 3333)
+if(metr < 682)
   {
 
     digitalWrite(ledcervena, LOW);
     digitalWrite(ledzelena, HIGH);
-    digitalWrite(ledzluta, LOW);
+    digitalWrite(ledzluta, LOW); 
   }
   
-if(metr > 3333  && metr < 6666)
+if(metr > 682  && metr < 852)
   {
 
     digitalWrite(ledcervena, LOW);
@@ -44,7 +44,7 @@ if(metr > 3333  && metr < 6666)
   }
 
 
-if(metr > 6666)
+if(metr > 852)
   {
 
     digitalWrite(ledcervena, HIGH);
