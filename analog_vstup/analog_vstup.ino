@@ -7,7 +7,7 @@ int zpozdeni = 400;
 
 int cteni, cteniOld=0,  pocetpolozek, metr=0;
 unsigned long casMic, casMicOld, casRozdil;
-
+int analog=0;
 
 void setup() 
 {
@@ -24,7 +24,7 @@ void loop()
 {
   
 
-metr= analogRead(A0);
+metr= analogRead(analog);
  
 
 if(metr < 682)
@@ -44,7 +44,7 @@ if(metr > 682  && metr < 852)
   }
 
 
-if(metr > 852)
+if (metr>852)
   {
 
     digitalWrite(ledcervena, HIGH);
@@ -60,7 +60,7 @@ if(metr > 852)
 
 
 
-void tisk() 
+void tisk()
 {
 if(pocetpolozek++>20) 
     {
@@ -76,32 +76,8 @@ if(pocetpolozek++>20)
 
 }
 
-//int cteni;
-//int led = 13;
-int led1 = 12;
-
-void led()
-	// Předat všechny proměnné jako parametry led( int pin, int sta) - (proměnná ctení název neodpovídá obsahu)
-		// a ovládat jen jednu diodu
-		// název led - název neodpovídá obsahu např(LedSvitiAnoNe)
-{
 
 
-  if(cteni == HIGH)
-  {
-
-    digitalWrite(led1, HIGH);
-    digitalWrite(led, HIGH);
-  }
-  else
-  {
-
-    digitalWrite(led1,LOW);
-    digitalWrite(led,LOW);
-  }
-
-
-}
 
 
 
